@@ -7,5 +7,61 @@
  * file and is applied both to the front end and in the block editor.
  */
 body {
-	@apply bg-background text-foreground font-sans;
+	@apply bg-background text-foreground font-sans min-h-screen;
+}
+.title {
+	@apply text-white uppercase font-bold text-2xl
+}
+.container {
+	@apply container mx-auto px-4 sm:px-0
+}
+.hero {
+	background-image: url("http://info-gaucho.local/wp-content/uploads/2025/03/info-gaucho-hero-poster.webp");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.icon-wrapper {
+    @apply w-12 m-4 flex items-center justify-center;
+}
+
+.icon-wrapper img {
+    @apply w-full h-full object-contain filter brightness-0 invert p-1;
+}
+
+/* Couleurs au survol */
+.instagram:hover img {
+    @apply filter-none;
+    filter: invert(19%) sepia(67%) saturate(4770%) hue-rotate(305deg) brightness(113%) contrast(115%);
+}
+
+
+.tiktok:hover img {
+    @apply filter-none rounded-sm;
+	box-shadow: 5px 5px 17px 0px #3F35FF, 
+-10px -5px 27px -3px #FF1111;
+background-color: white;
+}
+.youtube:hover img {
+    @apply filter-none rounded;
+    filter: invert(10%) sepia(89%) saturate(5176%) hue-rotate(359deg) brightness(122%) contrast(118%);
+}
+
+.twitter:hover img {
+    @apply filter-none;
+    filter: invert(51%) sepia(79%) saturate(1278%) hue-rotate(179deg) brightness(101%) contrast(99%);
+}
+
+.facebook:hover img {
+    @apply filter-none;
+    filter: invert(32%) sepia(9%) saturate(4526%) hue-rotate(191deg) brightness(93%) contrast(103%);
+}
+
+.bluesky:hover img {
+    @apply filter-none;
+    filter: invert(60%) sepia(23%) saturate(2197%) hue-rotate(169deg) brightness(101%) contrast(100%);
+}
+.btn {
+    @apply rounded-full px-4 py-2 uppercase font-bold bg-red-700 hover:bg-white hover:text-red-700;
 }

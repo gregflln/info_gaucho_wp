@@ -18,8 +18,9 @@ get_header();
 	<section id="primary">
 		<main id="main" class="flex gap-y-8 my-8">
 
-			<div class="flex justify-center align-middle p-16 w-full bg-neutral-800 rounded-xl">
-				<span>Info GauchO</span>
+			<div class="hero flex flex-col justify-center items-center align-middle p-16 w-full bg-neutral-800 rounded-xl aspect-video gap-y-4">
+				<img class="w-32" src="https://localhost:3000/wp-content/uploads/2025/03/Logo-blanc-transparent.png" alt="logo">
+				<p class="font-semibold text-xl">Actualité militante Orléanaise</p>
 			</div>
 
 		<?php
