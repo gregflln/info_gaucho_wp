@@ -23,10 +23,10 @@
 
 <?php wp_body_open(); ?>
 
-<div id="page" class="min-h-screen flex flex-col justify-start">
+<div id="page" class="flex flex-col justify-start">
 	<a href="#content" class="sr-only"><?php esc_html_e( 'Skip to content', 'info_gaucho' ); ?></a>
 
 	<?php get_template_part( 'template-parts/layout/header', 'content' ); ?>
 
 	<div id="content">
-		<div class="container mx-auto">
+		<div class="flex flex-col container mx-auto px-4 md:py-12 py-8 gap-8">

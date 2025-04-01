@@ -9,48 +9,109 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('text-neutral-200'); // Dark background, base text color ?> >
 
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+    <?php if (has_post_thumbnail()) : ?>
+        <div class="mb-8 md:mb-12 lg:mb-16">
+             <?php
+                // Display the featured image.
+                the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover rounded-md shadow-md']);
+             ?>
+        </div>
+    <?php endif; ?>
 
-		<?php if ( ! is_page() ) : ?>
-			<div class="entry-meta">
-				<?php info_gaucho_entry_meta(); ?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-4xl"> <?php // Layout container ?>
 
-	<?php info_gaucho_post_thumbnail(); ?>
+        <header class="mb-8 md:mb-10">
+            <?php the_title('<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-4 lg:mb-6">', '</h1>'); // Title styling for dark theme ?>
 
-	<div <?php info_gaucho_content_class( 'entry-content' ); ?>>
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers. */
-					__( 'Continue reading<span class="sr-only"> "%s"</span>', 'info_gaucho' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			)
-		);
+            <?php if (!is_page()) : // Only show meta for posts ?>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-400"> <?php // Meta text color for dark theme ?>
+                    <span>
+                        <time datetime="<?php echo get_the_date(DATE_ISO8601); ?>">
+                            <?php echo get_the_date(); ?>
+                        </time>
+                    </span>
+                    <span aria-hidden="true">&middot;</span>
+                    <span>
+                        <?php esc_html_e('By', 'your-theme-textdomain'); ?> <?php the_author_posts_link(); ?>
+                    </span>
+                    <?php if (has_category()) : ?>
+                        <span aria-hidden="true">&middot;</span>
+                        <span>
+                             <?php esc_html_e('In', 'your-theme-textdomain'); ?> <?php the_category(', '); ?>
+                        </span>
+                    <?php endif; ?>
+                     <?php // Optional: Add Reading Time here if needed ?>
+                     <?php // Comments link removed ?>
+                </div>
+            <?php endif; ?>
+        </header>
 
-		wp_link_pages(
-			array(
-				'before' => '<div>' . __( 'Pages:', 'info_gaucho' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
+        <div class="entry-content mt-8 lg:mt-12">
+            <?php
+            // Assumes @tailwindcss/typography plugin with 'prose-invert' for dark mode styling.
+            ?>
+            <div class="prose prose-lg lg:prose-xl prose-invert max-w-none text-gray-300 leading-relaxed"> <?php // Apply prose-invert directly, set base text color ?>
+                <?php
+                the_content();
 
-	<footer class="entry-footer">
-		<?php info_gaucho_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+                wp_link_pages(
+                    array(
+                        'before'      => '<nav class="mt-10 pt-6 border-t border-gray-700 flex justify-center space-x-2" aria-label="' . esc_attr__('Page Navigation', 'your-theme-textdomain') . '"><span class="font-medium text-gray-400 mr-2">' . esc_html__('Pages:', 'your-theme-textdomain') . '</span>', // Dark theme border and text
+                        'after'       => '</nav>',
+                        'link_before' => '<span class="inline-flex items-center justify-center px-3 py-1 border border-gray-600 rounded-md text-sm font-medium text-gray-300 bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">', // Dark theme link styling
+                        'link_after'  => '</span>',
+                        'pagelink'    => '%',
+                        'separator'   => '',
+                    )
+                );
+                ?>
+            </div>
+        </div>
 
-</article><!-- #post-${ID} -->
+        <?php if (!is_page()) : // Footer meta only for posts ?>
+            <footer class="mt-12 lg:mt-16 pt-8"> <?php // Dark theme border ?>
+                <?php if (has_tag()) : ?>
+                    <div class="text-sm">
+                        <span class="font-semibold text-gray-300"><?php esc_html_e('Tags:', 'your-theme-textdomain'); ?></span> <?php // Dark theme text ?>
+                        <span class="ml-2 text-gray-400"> <?php // Dark theme text ?>
+                            <?php the_tags('', ', ', ''); ?>
+                        </span>
+                    </div>
+                <?php endif; ?>
+
+                <?php
+                    edit_post_link(
+                        sprintf(
+                            esc_html__('Edit %s', 'your-theme-textdomain'),
+                            '<span class="sr-only">' . get_the_title() . '</span>'
+                        ),
+                        '<p class="mt-6 text-sm">',
+                        '</p>'
+                    );
+                ?>
+            </footer>
+        <?php endif; ?>
+
+    </div> <?php // End container ?>
+
+    <?php
+    // Post Navigation (Previous/Next)
+    if (is_singular('post')) :
+    ?>
+        <nav class="border-t border-gray-700 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto" aria-label="<?php esc_attr_e('Post Navigation', 'your-theme-textdomain'); ?>"> <?php // Dark theme border ?>
+            <div class="flex justify-between text-sm font-medium text-indigo-400"> <?php // Adjusted link color for dark bg ?>
+                <div class="text-left">
+                    <?php previous_post_link('%link', '<span aria-hidden="true">&larr;</span> %title'); ?>
+                </div>
+                <div class="text-right">
+                    <?php next_post_link('%link', '%title <span aria-hidden="true">&rarr;</span>'); ?>
+                </div>
+            </div>
+        </nav>
+    <?php endif; ?>
+
+    <?php // Comments Section Removed ?>
+
+</article>

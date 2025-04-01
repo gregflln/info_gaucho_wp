@@ -21,22 +21,6 @@ get_header();
 
 				if ( is_singular( 'post' ) ) {
 					// Previous/next post navigation.
-					the_post_navigation(
-						array(
-							'next_text' => '<span aria-hidden="true">' . __( 'Next Post', 'info_gaucho' ) . '</span> ' .
-								'<span class="sr-only">' . __( 'Next post:', 'info_gaucho' ) . '</span> <br/>' .
-								'<span>%title</span>',
-							'prev_text' => '<span aria-hidden="true">' . __( 'Previous Post', 'info_gaucho' ) . '</span> ' .
-								'<span class="sr-only">' . __( 'Previous post:', 'info_gaucho' ) . '</span> <br/>' .
-								'<span>%title</span>',
-						)
-					);
-				}
-
-				// If comments are open, or we have at least one comment, load
-				// the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
 				}
 
 				// End the loop.

@@ -9,9 +9,11 @@
 body {
 	@apply bg-background text-foreground font-sans min-h-screen;
 }
-.title {
+
+.title, .entry-title a {
 	@apply text-white uppercase font-bold text-2xl
 }
+    
 .container {
 	@apply container mx-auto px-4 sm:px-0
 }
@@ -20,6 +22,7 @@ body {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+    max-height: 500px;
 }
 
 .icon-wrapper {

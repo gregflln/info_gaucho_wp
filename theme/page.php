@@ -14,8 +14,7 @@
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
+
 
 			<?php
 			/* Start the Loop */
@@ -32,9 +31,6 @@ get_header();
 
 			endwhile; // End of the loop.
 			?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
 
 <?php
 get_footer();

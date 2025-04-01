@@ -38,7 +38,7 @@ if ( ! defined( 'INFO_GAUCHO_TYPOGRAPHY_CLASSES' ) ) {
 	 */
 	define(
 		'INFO_GAUCHO_TYPOGRAPHY_CLASSES',
-		'prose prose-neutral max-w-none prose-a:text-primary'
+		'prose prose-info_gaucho max-w-none prose-a:text-primary'
 	);
 }
 
