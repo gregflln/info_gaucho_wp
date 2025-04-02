@@ -12,13 +12,17 @@ get_header();
 
 	<section id="primary">
 		<main id="main">
+		
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-			</header><!-- .page-header -->
-
+			
+			<header class="page-header mb-10 md:mb-12 border-b border-neutral-700 pb-6">
+                    <?php
+                    single_term_title( '<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-100 leading-tight">', '</h1>' );
+					
+					?>
+                </header>
 			<?php
 			// Start the Loop.
 			while ( have_posts() ) :

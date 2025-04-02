@@ -1,6 +1,6 @@
 
 <header x-data="{ mobileMenuOpen: false }" class="bg-neutral-900 text-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
 
             <a href="<?php echo home_url('/'); ?>" class="flex-shrink-0">
