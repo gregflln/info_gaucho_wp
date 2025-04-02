@@ -8,7 +8,7 @@
  */
 ?>
 
-<footer class="bg-neutral-900 text-neutral-300 border-t border-neutral-800" aria-labelledby="footer-heading">
+<footer class="bg-neutral-900 text-neutral-300 border-t border-neutral-800 self-end w-full" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Pied de page</h2>
     
     <div class="container mx-auto px-4 py-8 md:py-12">
@@ -19,35 +19,49 @@
                 <!-- Logo et description -->
                 <div class="space-y-4">
                     <a href="<?php echo esc_url(home_url('/')); ?>" class="inline-block">
-                        <img class="h-12 w-auto" src="/wp-content/uploads/2025/03/Logo-blanc-transparent.png" alt="Logo Info Gaucho">
+                        <img class="h-16 w-auto" src="/wp-content/uploads/2025/03/Logo-blanc-transparent.png" alt="Logo Info Gaucho">
                     </a>
                     <p class="text-sm text-neutral-400 max-w-sm">
-                        Info Gaucho - Actualité militante Orléanaise. Votre média local indépendant qui donne la parole aux acteurs du changement.
+                        Info Gaucho - Actualité militante Orléanaise.
                     </p>
                 </div>
                 
                 <!-- Navigation et infos -->
                 <div class="grid grid-cols-2 gap-x-8 gap-y-6">
-                    <div>
-                        <h3 class="text-base font-bold text-white mb-4 uppercase tracking-wider">catégories</h3>
-                        <ul class="space-y-2">
-                            <li><a href="<?php echo esc_url(home_url('/reportages')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">Reportages</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/interviews')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">Interviews</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/carte-blanche')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">Carte Blanche</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/agenda')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">Agenda</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-base font-bold text-white mb-4 uppercase tracking-wider">informations</h3>
-                        <ul class="space-y-2">
-                            <li><a href="<?php echo esc_url(home_url('/a-propos')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">À Propos</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/equipe')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">Notre Équipe</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/mentions-legales')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">Mentions Légales</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/confidentialite')); ?>" class="text-neutral-400 hover:text-red-600 transition-colors duration-200">Confidentialité</a></li>
-                        </ul>
-                    </div>
-                </div>
+    <div>
+        <h3 class="text-base font-bold text-white mb-4 uppercase tracking-wider">catégories</h3>
+        <?php
+        wp_nav_menu(array(
+            'theme_location' => 'menu-1',
+            'container' => false,
+            'menu_class' => 'space-y-2',
+            'fallback_cb' => false,
+            'depth' => 1,
+            'link_before' => '<span class="text-neutral-400 hover:text-red-600 transition-colors duration-200">',
+            'link_after' => '</span>',
+            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+        ));
+        ?>
+    </div>
+
+    <div>
+        <h3 class="text-base font-bold text-white mb-4 uppercase tracking-wider">informations</h3>
+        <?php
+        wp_nav_menu(array(
+            'theme_location' => 'menu-2',
+            'container' => false,
+            'menu_class' => 'space-y-2',
+            'fallback_cb' => false,
+            'depth' => 1,
+            'link_before' => '<span class="text-neutral-400 hover:text-red-600 transition-colors duration-200">',
+            'link_after' => '</span>',
+            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+        ));
+        ?>
+    </div>
+</div>
+
+
             </div>
             
             <!-- Réseaux sociaux et contact -->
@@ -123,12 +137,12 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            <span>contact@infogaucho.fr</span>
+                            <span>contact@info-gaucho.fr</span>
                         </button>
                         <div x-show="showTooltip" class="absolute mt-2 px-2 py-1 bg-red-600 text-white text-xs rounded">Copié !</div>
                     </div>
                     
-                    <a href="mailto:contact@infogaucho.fr"
+                    <a href="mailto:contact@info-gaucho.fr"
                        class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded transform transition-transform duration-300 hover:-translate-y-1 uppercase">
                        envoyez nous un email
                     </a>

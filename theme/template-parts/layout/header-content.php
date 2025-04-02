@@ -1,15 +1,16 @@
 
 <header x-data="{ mobileMenuOpen: false }" class="bg-neutral-900 text-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-3">
+    <div class="container mx-auto px-4 py-6">
         <div class="flex justify-between items-center">
 
             <a href="<?php echo home_url('/'); ?>" class="flex-shrink-0">
                 <img src="http://info-gaucho.local/wp-content/uploads/2025/03/Logo-blanc-transparent.png" 
                      alt="<?php bloginfo('name'); ?>" 
-                     class="h-10 w-auto"> 
+                     class="h-16 w-auto"> 
             </a>
 
             <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+               <!--
                  <nav aria-label="Main navigation">
                    <ul class="flex space-x-6 lg:space-x-8">
                        <li><a href="<?php echo home_url('/reportages/'); ?>" class="text-sm font-medium uppercase hover:text-red-600 transition duration-150 ease-in-out">Reportages</a></li>
@@ -18,6 +19,22 @@
                        <li><a href="<?php echo home_url('/agenda/'); ?>" class="text-sm font-medium uppercase hover:text-red-600 transition duration-150 ease-in-out">Agenda</a></li>
                    </ul>
                 </nav>
+                -->
+                <nav aria-label="Main navigation">
+                    <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'menu-1',
+                        'container' => false,
+                        'menu_class' => 'flex space-x-6 lg:space-x-8',
+                        'fallback_cb' => false,
+                        'depth' => 1,
+                        'link_before' => '<span class="text-sm font-medium uppercase hover:text-red-600 transition duration-150 ease-in-out">',
+                        'link_after' => '</span>',
+                        'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+                    ));
+                    ?>
+                </nav>
+
 
                 <form action="<?php echo home_url('/'); ?>" method="get" class="relative hidden md:block">
                     <input 
@@ -66,12 +83,22 @@
         x-transition:leave-start="opacity-100 transform translate-y-0"
         x-transition:leave-end="opacity-0 transform -translate-y-2"
         style="display: none;" 
-        > <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-neutral-700">
-            <a href="<?php echo home_url('/reportages/'); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-700">Reportages</a>
-            <a href="<?php echo home_url('/interviews/'); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-700">Interviews</a>
-            <a href="<?php echo home_url('/carte-blanche/'); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-700">Carte Blanche</a>
-            <a href="<?php echo home_url('/agenda/'); ?>" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-700">Agenda</a>
-        </div>
+        > 
+        <div class="list-none px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-neutral-700">
+    <?php
+    wp_nav_menu(array(
+        'theme_location' => 'menu-1',
+        'container' => false,
+        'menu_class' => '',
+        'fallback_cb' => false,
+        'depth' => 1,
+        'link_before' => '<span class="block px-3 py-2 rounded-md text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-700">',
+        'link_after' => '</span>',
+        'items_wrap' => '%3$s', // Supprime l'enveloppe <ul> inutile
+    ));
+    ?>
+</div>
+
         <div class="px-4 pb-4 pt-2">
              <form action="<?php echo home_url('/'); ?>" method="get" class="flex">
                 <input 

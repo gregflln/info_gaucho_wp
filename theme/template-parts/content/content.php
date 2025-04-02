@@ -25,8 +25,11 @@ $latest_posts_query = new WP_Query($args);
 if ($latest_posts_query->have_posts()) :
 	?>
     
-    <?php /* Optionnel : Si vous avez besoin d'une grille ici (remplacez/ajustez grid-cols-* selon vos breakpoints) */ ?>
+    <?php  /* 
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    */
+    ?>
+    <div>
 	
     <?php while ($latest_posts_query->have_posts()) : $latest_posts_query->the_post(); ?>
         <?php
@@ -47,42 +50,9 @@ if ($latest_posts_query->have_posts()) :
         $fallback_bg_class = 'bg-gray-800'; // Couleur de fond si pas d'image
 
         ?>
-        <article class="group relative block overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-            <a href="<?php the_permalink(); ?>" class="block">
-                
-                <?php // Conteneur pour l'image et les superpositions ?>
-                <div class="relative aspect-square w-full <?php echo $thumbnail_url ? '' : esc_attr($fallback_bg_class); ?> bg-cover bg-center"
-                     <?php if ($thumbnail_url) : ?>
-                         style="background-image: url('<?php echo esc_url($thumbnail_url); ?>');"
-                     <?php endif; ?>
-                     >
-
-                    <?php // Superposition semi-transparente (optionnel, pour améliorer lisibilité texte) ?>
-                    <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
-
-                    <?php // Catégorie en haut à droite ?>
-                    <?php if ($category_name) : ?>
-                        <div class="absolute top-2 right-2 z-10">
-                            <span class="inline-block bg-red-600 text-white text-xs font-medium px-2.5 py-1 rounded-full shadow">
-                                <?php echo $category_name; ?>
-                            </span>
-                            <?php /* // Alternative si vous voulez que la catégorie soit cliquable:
-                             <a href="<?php echo $category_link; ?>" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs font-medium px-2.5 py-1 rounded-full shadow transition-colors duration-200">
-                                <?php echo $category_name; ?>
-                            </a>
-                            */ ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php // Titre en bas centré ?>
-                    <div class="absolute bottom-0 left-0 right-0 p-3 z-10 bg-gradient-to-t from-black/80 via-black/60 to-transparent">
-                         <h3 class="text-center text-sm sm:text-base font-semibold text-white leading-tight line-clamp-2">
-                               <?php the_title(); ?>
-                         </h3>
-                    </div>
-                </div>
-            </a>
-        </article>
+        <?php
+        get_template_part( 'template-parts/content/content', 'excerpt' );
+        ?>
 		
 		<?php endwhile; ?>
 

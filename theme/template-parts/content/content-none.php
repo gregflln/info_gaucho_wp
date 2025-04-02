@@ -1,76 +1,38 @@
 <?php
 /**
- * Template part for displaying a message when posts are not found
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Template part pour afficher un message en cas d'absence de contenu.
  *
  * @package info_gaucho
  */
-
 ?>
 
-<section>
+<section class="flex flex-col items-center justify-center p-8 text-neutral-100">
+    <header class="mb-6 text-center">
+        <?php if ( is_search() ) : ?>
+            <h1 class="text-2xl font-semibold text-neutral-200">
+                <?php echo sprintf( esc_html__( 'Résultats de recherche pour : %s', 'info_gaucho' ), '<span class="text-red-600">' . get_search_query() . '</span>' ); ?>
+            </h1>
+        <?php else : ?>
+            <h1 class="text-2xl font-semibold text-neutral-200"><?php esc_html_e( 'Aucun contenu trouvé', 'info_gaucho' ); ?></h1>
+        <?php endif; ?>
+    </header>
 
-	<header class="page-header">
-		<?php if ( is_search() ) : ?>
-
-			<h1 class="page-title">
-				<?php
-				printf(
-					/* translators: 1: search result title. 2: search term. */
-					'<h1 class="page-title">%1$s <span>%2$s</span></h1>',
-					esc_html__( 'Search results for:', 'info_gaucho' ),
-					get_search_query()
-				);
-				?>
-			</h1>
-
-		<?php else : ?>
-
-			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'info_gaucho' ); ?></h1>
-
-		<?php endif; ?>
-	</header><!-- .page-header -->
-
-	<div <?php info_gaucho_content_class( 'page-content' ); ?>>
-		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) :
-			?>
-
-			<p>
-				<?php esc_html_e( 'Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts.', 'info_gaucho' ); ?>
-			</p>
-
-			<p>
-				<a href="<?php echo esc_url( admin_url( 'edit.php' ) ); ?>">
-					<?php
-					/* translators: 1: link to WP admin new post page. */
-					esc_html_e( 'Add or publish posts', 'info_gaucho' );
-					?>
-				</a>
-			</p>
-
-			<?php
-		elseif ( is_search() ) :
-			?>
-
-			<p>
-				<?php esc_html_e( 'Your search generated no results. Please try a different search.', 'info_gaucho' ); ?>
-			</p>
-
-			<?php
-			get_search_form();
-		else :
-			?>
-
-			<p>
-				<?php esc_html_e( 'No content matched your request.', 'info_gaucho' ); ?>
-			</p>
-
-			<?php
-			get_search_form();
-		endif;
-		?>
-	</div><!-- .page-content -->
-
+    <div class="max-w-lg text-neutral-400 text-center">
+        <?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+            <p class="mb-4">
+                <?php esc_html_e( 'Votre site affiche les articles récents sur la page d’accueil, mais aucun article n’a été publié.', 'info_gaucho' ); ?>
+            </p>
+            <a href="<?php echo esc_url( admin_url( 'edit.php' ) ); ?>" class="inline-block px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded">
+                <?php esc_html_e( 'Ajouter un article', 'info_gaucho' ); ?>
+            </a>
+        <?php elseif ( is_search() ) : ?>
+            <p class="mb-4">
+                <?php esc_html_e( 'Aucun résultat pour votre recherche. Essayez un autre terme.', 'info_gaucho' ); ?>
+            </p>
+        <?php else : ?>
+            <p class="mb-4">
+                <?php esc_html_e( 'Désolé, aucun contenu ne correspond à votre demande.', 'info_gaucho' ); ?>
+            </p>
+        <?php endif; ?>
+    </div>
 </section>
