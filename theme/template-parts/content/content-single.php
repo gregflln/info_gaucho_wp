@@ -11,6 +11,10 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('text-neutral-200'); // Dark background, base text color ?> >
 
+    
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-4xl"> <?php // Layout container ?>
+
     <?php if (has_post_thumbnail()) : ?>
         <div class="mb-8 md:mb-12 lg:mb-16">
              <?php
@@ -19,8 +23,6 @@
              ?>
         </div>
     <?php endif; ?>
-
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-4xl"> <?php // Layout container ?>
 
         <header class="mb-8 md:mb-10">
             <?php the_title('<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-4 lg:mb-6">', '</h1>'); // Title styling for dark theme ?>
@@ -31,10 +33,6 @@
                         <time datetime="<?php echo get_the_date(DATE_ISO8601); ?>">
                             <?php echo get_the_date(); ?>
                         </time>
-                    </span>
-                    <span aria-hidden="true">&middot;</span>
-                    <span>
-                        <?php esc_html_e('By', 'your-theme-textdomain'); ?> <?php the_author_posts_link(); ?>
                     </span>
                     <?php if (has_category()) : ?>
                         <span aria-hidden="true">&middot;</span>
@@ -81,16 +79,6 @@
                     </div>
                 <?php endif; ?>
 
-                <?php
-                    edit_post_link(
-                        sprintf(
-                            esc_html__('Edit %s', 'your-theme-textdomain'),
-                            '<span class="sr-only">' . get_the_title() . '</span>'
-                        ),
-                        '<p class="mt-6 text-sm">',
-                        '</p>'
-                    );
-                ?>
             </footer>
         <?php endif; ?>
 
