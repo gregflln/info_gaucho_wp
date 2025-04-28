@@ -19,7 +19,7 @@
                 <!-- Logo et description -->
                 <div class="space-y-4">
                     <a href="<?php echo esc_url(home_url('/')); ?>" class="inline-block">
-                        <img class="h-16 w-auto" src="/wp-content/uploads/2025/03/Logo-blanc-transparent.png" alt="Logo Info Gaucho">
+                        <img class="h-16 w-auto" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo_transparent_blanc.png' ); ?>" alt="Logo Info Gaucho">
                     </a>
                     <p class="text-sm text-neutral-400 max-w-sm">
                         Info Gaucho - Actualité militante Orléanaise.
@@ -73,55 +73,71 @@
                         <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-red-600"></span>
                     </h3>
                     
+                    <!-- LIENS RESEAUX SOCIAUX  -->
+
                     <div class="grid grid-cols-3 sm:grid-cols-6 gap-4">
-                        <a href="https://www.instagram.com/infogaucho/" target="_blank" rel="noopener noreferrer" 
-                           class="group">
-                            <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
-                                <span class="sr-only">Instagram</span>
-                                <img class="h-8 w-8 filter invert" src="/wp-content/uploads/2025/03/1161953_instagram_icon.svg" alt="Instagram">
-                            </div>
-                        </a>
+    <a href="https://www.instagram.com/infogaucho/" target="_blank" rel="noopener noreferrer" 
+       class="group">
+        <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
+            <span class="sr-only">Instagram</span>
+            <img class="h-8 w-8 filter invert" 
+                 src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/instagram.svg' ); ?>" 
+                 alt="Instagram">
+        </div>
+    </a>
 
-                        <a href="https://www.tiktok.com/@info.gaucho" target="_blank" rel="noopener noreferrer" 
-                           class="group">
-                            <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
-                                <span class="sr-only">TikTok</span>
-                                <img class="h-8 w-8 filter invert" src="/wp-content/uploads/2025/03/5588510_editting_multimedia_social-media_tiktok_video_icon.svg" alt="TikTok">
-                            </div>
-                        </a>
+    <a href="https://www.tiktok.com/@info.gaucho" target="_blank" rel="noopener noreferrer" 
+       class="group">
+        <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
+            <span class="sr-only">TikTok</span>
+            <img class="h-8 w-8 filter invert" 
+                 src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/tiktok.svg' ); ?>" 
+                 alt="TikTok">
+        </div>
+    </a>
 
-                        <a href="https://www.youtube.com/@infogaucho" target="_blank" rel="noopener noreferrer" 
-                           class="group">
-                            <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
-                                <span class="sr-only">YouTube</span>
-                                <img class="h-8 w-8 filter invert" src="/wp-content/uploads/2025/03/5305164_play_video_youtube_youtube-logo_icon.svg" alt="YouTube">
-                            </div>
-                        </a>
+    <a href="https://www.youtube.com/@infogaucho" target="_blank" rel="noopener noreferrer" 
+       class="group">
+        <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
+            <span class="sr-only">YouTube</span>
+            <img class="h-8 w-8 filter invert" 
+                 src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/youtube.svg' ); ?>" 
+                 alt="YouTube">
+        </div>
+    </a>
 
-                        <a href="https://x.com/info_gaucho" target="_blank" rel="noopener noreferrer" 
-                           class="group">
-                            <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
-                                <span class="sr-only">X (Twitter)</span>
-                                <img class="h-8 w-8 filter invert" src="/wp-content/uploads/2025/03/5305170_bird_social-media_social-network_tweet_twitter_icon.svg" alt="X">
-                            </div>
-                        </a>
+    <a href="https://x.com/info_gaucho" target="_blank" rel="noopener noreferrer" 
+       class="group">
+        <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
+            <span class="sr-only">X (Twitter)</span>
+            <img class="h-8 w-8 filter invert" 
+                 src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/x.svg' ); ?>" 
+                 alt="X"> 
+                 </div>
+    </a>
 
-                        <a href="https://www.facebook.com/Infogaucho/" target="_blank" rel="noopener noreferrer" 
-                           class="group">
-                            <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
-                                <span class="sr-only">Facebook</span>
-                                <img class="h-8 w-8 filter invert" src="/wp-content/uploads/2025/03/Facebook-1-Streamline-Plump.svg" alt="Facebook">
-                            </div>
-                        </a>
+    <a href="https://www.facebook.com/Infogaucho/" target="_blank" rel="noopener noreferrer" 
+       class="group">
+        <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
+            <span class="sr-only">Facebook</span>
+            <img class="h-8 w-8 filter invert" 
+                 src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/facebook.svg' ); ?>" 
+                 alt="Facebook">
+        </div>
+    </a>
 
-                        <a href="https://bsky.app/profile/infogaucho.bsky.social" target="_blank" rel="noopener noreferrer" 
-                           class="group">
-                            <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
-                                <span class="sr-only">Bluesky</span>
-                                <img class="h-8 w-8 filter invert" src="/wp-content/uploads/2025/03/Bluesky-Streamline-Simple-Icons-1.svg" alt="Bluesky">
-                            </div>
-                        </a>
-                    </div>
+    <a href="https://bsky.app/profile/infogaucho.bsky.social" target="_blank" rel="noopener noreferrer" 
+       class="group">
+        <div class="bg-neutral-800 hover:bg-red-600 p-4 rounded-md transition-transform duration-300 transform group-hover:-translate-y-1 flex justify-center items-center">
+            <span class="sr-only">Bluesky</span>
+            <img class="h-8 w-8 filter invert" 
+                 src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/bluesky.svg' ); ?>" 
+                 alt="Bluesky">
+        </div>
+    </a>
+</div>
+
+                    <!-- FIN DES LIENS -->
                 </div>
 
                 <!-- Contact -->
