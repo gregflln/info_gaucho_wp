@@ -22,8 +22,8 @@ get_header();
 				// End the loop.
 			endwhile;
 
-			// Previous/next page navigation.
-			info_gaucho_the_posts_navigation();
+			
+			get_template_part( 'template-parts/layout/pagination' );
 
 		else :
 

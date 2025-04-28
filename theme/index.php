@@ -35,8 +35,6 @@ get_header();
 
 			get_template_part( 'template-parts/content/content' );
 
-			// Previous/next page navigation.
-			info_gaucho_the_posts_navigation();
 
 		} else {
 
